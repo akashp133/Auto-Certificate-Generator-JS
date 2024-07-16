@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input[type="text"], input[type="button"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border: 3px solid #555;
+}
+
+input[type="button"] {
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+}
+
+input[type="button"]:hover {
+  background-color: #45a049;
+}
+
+#certificate {
+  background-color: #ffffff;
+  border: 2px solid black;
+  padding: 20px;
+  width: 900px;
+  height: auto;
+  position: relative;
+  margin: 0 auto;
+}
+h1 {
+  text-align: center;
+  
+}
+h2 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+p {
+  text-align: justify;
+}
+
+.signature-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.signature-block {
+  text-align: center;
+}
+
+.signature-block p {
+  margin: 0;
+}
+</style>
+</head>
+<body>
+
+<h2>MRP Declaration</h2>
+
+<form id="certificateForm">
+  <!-- Form inputs remain unchanged -->
+  <label for="oemName">OEM Name:</label><br>
+  <input type="text" id="oemName" name="oemName"><br>
+  <label for="brandCategory">Brand and Category Name:</label><br>
+  <input type="text" id="brandCategory" name="brandCategory"><br>
+  <label for="deemedOemName">Model Number:</label><br>
+  <input type="text" id="deemedOemName" name="deemedOemName"><br>
+  <label for="MRP">MRP:</label><br>
+  <input type="text" id="MRP" name="MRP"><br>
+  <input type="button" value="Generate Certificate" onclick="generateCertificate()">
+  <input type="button" value="Print Certificate" onclick="printCertificate()">
+</form>
+
+<div id="certificate">
+
+  <h2>TO WHOMSOEVER IT MAY CONCERN</h2>
+  <p>This is to confirm that we <strong id="certOemName"></strong> are OEM of <strong id="certBrandCategory"></strong>.</p>
+
+  <p>We hereby certify that the MRP for the product having model number <strong id="certDeemedOemName"></strong> of the brand mentioned above is INR <strong id="MRP1"></strong> </p>
+
+  <p>This MRP is applicable to this model of the product only.</p>
+  <p>It is requested that the MRP may be approved. </p>
+  <!-- Certificate content with placeholders for dynamic data -->
+  <div class="signature-section">
+    <div class="signature-block">
+      <p>(Signature of Authorized Signatory)</p>
+      <br>
+      <p>For <strong id="certOem"></strong> (OEM)</p>
+      <br>
+      <p>Name :</p>
+      <p>Designation :</p>
+      <p>E-mail :</p>
+      <p>Tel (Landline) :</p>
+      <p>Full Address :</p>
+      <br>
+      <p>Date :</p>
+      <!-- Additional fields for name, designation, etc. -->
+    </div>
+    
+  </div>
+   <!--<br> 
+   <h1 >Annexure 1 </h1>
+   <h2>Undertaking</h2> -->
+</div>
+
+<script>
+// JavaScript functions remain unchanged
+function generateCertificate() {
+  var oemName = document.getElementById("oemName").value;
+  var brandCategory = document.getElementById("brandCategory").value;
+  var deemedOemName = document.getElementById("deemedOemName").value;
+  var MRP = document.getElementById("MRP").value;
+  
+  document.getElementById("certOemName").innerHTML = oemName;
+  document.getElementById("certBrandCategory").innerHTML = brandCategory;
+  document.getElementById("certDeemedOemName").innerHTML = deemedOemName;
+  document.getElementById("MRP1").innerHTML = MRP;
+  document.getElementById("certOem").innerHTML = oemName;
+  document.getElementById("certDeemedOem").innerHTML = deemedOemName;
+  
+  html2canvas(document.querySelector("#certificate")).then(canvas => {
+    var link = document.createElement('a');
+    link.download = 'certificate.png';
+    link.href = canvas.toDataURL()
+    link.click();
+  });
+}
+
+function printCertificate() {
+  var printContents = document.getElementById('certificate').innerHTML;
+  var originalContents = document.body.innerHTML;
+  document.body.innerHTML = printContents;
+  window.print();
+  document.body.innerHTML = originalContents;
+}
+
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input[type="text"], input[type="button"] {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+
+
+input[type="text"]:focus {
+  border: 3px solid #555;
+}
+
+input[type="button"] {
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  
+}
+
+input[type="button"]:hover {
+  background-color: #45a049;
+}
+
+#certificate {
+  background-color: #ffffff;
+  border: 2px solid black;
+  padding: 20px;
+  width: 900px;
+  height: auto;
+  position: relative;
+  margin: 0 auto;
+}
+h1 {
+  text-align: center;
+  
+}
+h2 , h3{
+  text-align: center;
+  text-decoration: underline;
+}
+
+p {
+  text-align: justify;
+}
+
+.signature-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.signature-block {
+  text-align: center;
+}
+
+.signature-block p {
+  margin: 0;
+}
+#certificateForm  {
+  display: flex;
+  justify-content: space-between;
+}
+.formbutton{
+  display: flex;
+  justify-content: space-evenly;
+}
+</style>
+</head>
+<body>
+
+<h2>Certificate Generator</h2>
+
+ 
+  <h3>For Certificate</h3> 
+<form id="certificateForm">
+
+  <!-- Form inputs remain unchanged -->
+  <label for="oemName">OEM Name:</label><br>
+  <input type="text" id="oemName" name="oemName"><br>
+  <label for="brandCategory">Brand and Category Name:</label><br>
+  <input type="text" id="brandCategory" name="brandCategory"><br>
+  <label for="deemedOemName">Deemed OEM Name:</label><br>
+  <input type="text" id="deemedOemName" name="deemedOemName"><br>
+  
+</form>
+<!--oem values like name email tel etc. -->
+<h3>For OEM</h3>
+<form id="certificateForm">
+     <!--Form inputs remain unchanged -->
+    
+    <label for="oemName1"> Name:</label><br>
+    <input type="text" id="oemName1" name="oemName1"><br>
+    <label for="Designation">Designation:</label><br>
+    <input type="text" id="Designation" name="Designation"><br>
+    <label for="oemEmail">E-mail:</label><br>
+    <input type="text" id="oemEmail" name="oemEmail"><br>
+    
+  </form>
+  <form id="certificateForm">
+    <!--Form inputs remain unchanged -->
+   
+   <label for="Tel"> Tel(Landline):</label><br>
+   <input type="text" id="Tel" name="Tel"><br>
+   <label for="Address">Full Address:</label><br>
+   <input type="text" id="Address" name="Address"><br>
+   
+ </form>
+ <!--Deemed oem values like name email tel etc. -->
+<h3>For Deemed OEM</h3>
+<form id="certificateForm">
+     <!--Form inputs remain unchanged -->
+    
+    <label for="doemName1"> Name:</label><br>
+    <input type="text" id="doemName1" name="doemName1"><br>
+    <label for="Ddesignation">Designation:</label><br>
+    <input type="text" id="Ddesignation" name="Ddesignation"><br>
+    <label for="doemEmail">E-mail:</label><br>
+    <input type="text" id="doemEmail" name="doemEmail"><br>
+    
+  </form>
+  <form id="certificateForm">
+    <!--Form inputs remain unchanged -->
+   
+   <label for="dTel"> Tel(Landline):</label><br>
+   <input type="text" id="dTel" name="dTel"><br>
+   <label for="dAddress">Full Address:</label><br>
+   <input type="text" id="dAddress" name="dAddress"><br>
+   
+ </form>
+ <!--certificate generater -->
+<div class="formbutton">
+<input type="button" value="Generate Certificate" onclick="generateCertificate()"><br>
+  <input type="button" value="Print Certificate" onclick="printCertificate()">
+</div>
+<div id="certificate">
+  
+  <p style="text-align: left;">To</p>
+  <br>
+  <p style="text-align: left;">CEO</p>
+  <p style="text-align: left;">GeM- Government E Marketplace</p>
+  <p style="text-align: left;">Delhi</p>
+  <h2>TO WHOMSOEVER IT MAY CONCERN</h2>
+  <p>This is to confirm that we <strong id="certOemName"></strong> are OEM of <strong id="certBrandCategory"></strong>. We are selling through our Authorized Distributors in India. We are providing required technical support, consumable & spare parts. We also facilitate imperative trainings time to time.</p>
+  <p>We hereby authorize <strong id="certDeemedOemName"></strong> to register as "Deemed OEM" for <strong id="certBrand"></strong> for our different range of products.</p>
+  <p><strong id="certDeemedOemNameRepeat"></strong> will perform product brochure uploading, manage and remove unauthorized resellers & other day to day/term/month etc. increasing co-ordination with us <strong id="certDeemedOemNameRepeat2"></strong> is also authorized to operate OEM Panel on our behalf and also give undertaking as attached in annexure 1</p>
+  <p>It is requested that <strong id="certDeemedOemNameRepeat3"></strong> should be approved as Deemed OEM with immediate action.</p>
+  <!-- Certificate content with placeholders for dynamic data -->
+  <div class="signature-section">
+    <div class="signature-block">
+      <p>(Signature of Authorized Signatory)</p>
+      <br>
+      <p>For <strong id="certOem"></strong> (OEM)</p>
+      <br>
+      <p>Name :<strong id="oemNameRepeat1"></strong></p>
+      <p>Designation :<strong id="Designation1"></strong></p>
+      <p>E-mail :<strong id="oemEmail1"></strong></p>
+      <p>Tel (Landline) :<strong id="Tele"></strong></p>
+      <p>Full Address :<strong id="Addr"></strong></p>
+      <br>
+      <p  id="currentDate"></p>
+      <!-- Additional fields for name, designation, etc. -->
+    </div>
+    <div class="signature-block">
+      <p>(Signature of Authorized Signatory)</p>
+      <br>
+      <p>For <strong id="certDeemedOem"></strong> (Deemed OEM)</p>
+      <br>
+      <p>Name : <strong id="doemNameRepeat1"></strong></p>
+      <p>Designation :<strong id="Ddesignation1"></strong></p>
+      <p>E-mail :<strong id="doemEmail1"></strong></p>
+      <p>Tel (Landline) :<strong id="dTele"></strong></p>
+      <p>Full Address :<strong id="dAddr"></strong></p>
+      <br>
+      <p  id="currentDate1"></p>
+      <!-- Additional fields for name, designation, etc. -->
+    </div>
+  </div>
+   <!--<br> 
+   <h1 >Annexure 1 </h1>
+   <h2>Undertaking</h2> -->
+</div>
+
+<script>
+// JavaScript functions remain unchanged
+function generateCertificate() {
+  var oemName = document.getElementById("oemName").value;
+  var brandCategory = document.getElementById("brandCategory").value;
+  var deemedOemName = document.getElementById("deemedOemName").value;
+  //oem
+  var oemNamee = document.getElementById("oemName1").value;
+  var Designationn = document.getElementById("Designation").value;
+  var oemEmaill = document.getElementById("oemEmail").value;
+  var oemTel = document.getElementById("Tel").value;
+  var oemAdd = document.getElementById("Address").value;
+//deemed oem
+  var doemNamee = document.getElementById("doemName1").value;
+  var Ddesignationn = document.getElementById("Ddesignation").value;
+  var doemEmaill = document.getElementById("doemEmail").value;
+  var doemTel = document.getElementById("dTel").value;
+  var doemAdd = document.getElementById("dAddress").value;
+  
+  document.getElementById("certOemName").innerHTML = oemName;
+  document.getElementById("certBrandCategory").innerHTML = brandCategory;
+  document.getElementById("certDeemedOemName").innerHTML = deemedOemName;
+  document.getElementById("certBrand").innerHTML = brandCategory;
+  document.getElementById("certDeemedOemNameRepeat").innerHTML = deemedOemName;
+  document.getElementById("certDeemedOemNameRepeat2").innerHTML = deemedOemName;
+  document.getElementById("certDeemedOemNameRepeat3").innerHTML = deemedOemName;
+  document.getElementById("certOem").innerHTML = oemName;
+  document.getElementById("certDeemedOem").innerHTML = deemedOemName;
+  //oem
+  document.getElementById("oemNameRepeat1").innerHTML = oemNamee;
+  document.getElementById("Designation1").innerHTML = Designationn;
+  document.getElementById("oemEmail1").innerHTML = oemEmaill;
+  document.getElementById("Tele").innerHTML = oemTel;
+  document.getElementById("Addr").innerHTML = oemAdd;
+  //deemed oem
+  document.getElementById("doemNameRepeat1").innerHTML = doemNamee;
+  document.getElementById("Ddesignation1").innerHTML = Ddesignationn;
+  document.getElementById("doemEmail1").innerHTML = doemEmaill;
+  document.getElementById("dTele").innerHTML = doemTel;
+  document.getElementById("dAddr").innerHTML = doemAdd;
+  //date
+  document.getElementById("currentDate").innerHTML = getCurrentDate();
+  document.getElementById("currentDate1").innerHTML = getCurrentDate();
+  
+  html2canvas(document.querySelector("#certificate")).then(canvas => {
+    var link = document.createElement('a');
+    link.download = 'certificate.png';
+    link.href = canvas.toDataURL()
+    link.click();
+  });
+}
+
+function printCertificate() {
+  var printContents = document.getElementById('certificate').innerHTML;
+  var originalContents = document.body.innerHTML;
+  document.body.innerHTML = printContents;
+  window.print();
+  document.body.innerHTML = originalContents;
+}
+
+function getCurrentDate() {
+  const now = new Date();
+  return `Date: ${now.toDateString()}`;
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+</body>
+</html>
